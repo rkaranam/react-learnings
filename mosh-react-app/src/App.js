@@ -2,7 +2,8 @@ import './App.css';
 // import Items from './components/Items';
 // import Counter from './components/Counter';
 // import MyApp from './components/MyApp';
-import SearchTitle from './components/SearchTitle';
+// import SearchTitle from './components/SearchTitle';
+import NameForm from './components/NameForm';
 
 function App() {
 	return (
@@ -12,9 +13,10 @@ function App() {
 					<Items />
 					<Counter />
 					<MyApp /> 
+					<SearchTitle />
 				*/
 			}
-			<SearchTitle />
+			<NameForm/>
 		</div>
 	);
 }
