@@ -4,7 +4,8 @@ import './App.css';
 // import MyApp from './components/MyApp';
 // import SearchTitle from './components/SearchTitle';
 // import NameForm from './components/NameForm';
-import TutorialSites from './components/TutorialSites';
+// import TutorialSites from './components/forms/TutorialSites';
+import Reservation from './components/forms/Reservation';
 
 function App() {
 	return (
@@ -16,9 +17,10 @@ function App() {
 					<MyApp /> 
 					<SearchTitle />
 					<NameForm/>
+					<TutorialSites />
 				*/
 			}
-			<TutorialSites />
+			<Reservation />
 		</div>
 	);
 }
