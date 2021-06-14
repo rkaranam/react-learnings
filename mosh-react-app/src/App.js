@@ -3,7 +3,8 @@ import './App.css';
 // import Counter from './components/Counter';
 // import MyApp from './components/MyApp';
 // import SearchTitle from './components/SearchTitle';
-import NameForm from './components/NameForm';
+// import NameForm from './components/NameForm';
+import TutorialSites from './components/TutorialSites';
 
 function App() {
 	return (
@@ -14,9 +15,10 @@ function App() {
 					<Counter />
 					<MyApp /> 
 					<SearchTitle />
+					<NameForm/>
 				*/
 			}
-			<NameForm/>
+			<TutorialSites />
 		</div>
 	);
 }
