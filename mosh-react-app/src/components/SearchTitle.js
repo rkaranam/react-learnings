@@ -18,6 +18,7 @@ export default class SearchTitle extends React.Component {
             searchTerm: ''
         }
         this.onSearchItem = this.onSearchItem.bind(this);
+        this.onRemove = this.onRemove.bind(this);
     }
 
     onSearchItem(event) {
@@ -30,18 +31,47 @@ export default class SearchTitle extends React.Component {
     }
 
     render() {
+
+        const { itemsList, searchTerm } = this.state;
+
         return (
-            <div>
-                <div className="SearchTitle">
-                    <h3>Search By Title</h3>
-                    <form>
-                        <p>
-                            <input type="text" onChange={this.onSearchItem}/>
-                        </p>
-                    </form>
-                </div>
+            <div className="search-app">
+                <SearchForm pattern={searchTerm} onSearchChange={this.onSearchItem}/>
+                
+                <Result list={itemsList} pattern={searchTerm} onDismiss={this.onRemove}/>                
+            </div>
+        );
+    }
+
+}
+
+class SearchForm extends React.Component {
+    render() {
+
+        const { pattern, onSearchChange } = this.props;
+
+        return(
+            <div className="search-title">
+                <h3>Search By Title</h3>
+                <form>
+                    <p>
+                        <input type="text" value={pattern} onChange={onSearchChange}/>
+                    </p>
+                </form>
+            </div>
+        );
+    }
+}
+
+class Result extends React.Component {
+    render() {
+
+        const { list: items, pattern, onDismiss } = this.props;
+
+        return(
+            <div className="search-result">
                 {
-                    this.state.itemsList.filter(isSearched(this.state.searchTerm)).map(item => 
+                    items.filter(isSearched(pattern)).map(item => 
                         <div key={item.objectId} className="item">
                             <span>
                                 <a href={item.url}>{item.title}</a>
@@ -50,7 +80,7 @@ export default class SearchTitle extends React.Component {
                                 <p>Author: {item.author}</p>
                                 <p>Comments: {item.num_comments} and Points: {item.points}</p>
                                 <p>
-                                    <button type="button" onClick={() => this.onRemove(item.objectId)}>Remove</button>
+                                    <button type="button" onClick={() => onDismiss(item.objectId)}>Remove</button>
                                 </p>
                             </span>
                         </div>
@@ -59,5 +89,4 @@ export default class SearchTitle extends React.Component {
             </div>
         );
     }
-
 }
